@@ -103,15 +103,16 @@
         });
 
 
+        document.querySelector("#unity-loading-bar").style.display = "block";
+
         var script = document.createElement("script");
         script.src = loaderUrl;
         script.onload = () => {
             createUnityInstance(canvas, config, (progress) => {
-                spinner.style.display = "none";
-                progressBarEmpty.style.display = "";
-                progressBarFull.style.width = `${100 * progress}%`;
+                document.querySelector("#unity-progress-bar-full").style.width = 100 * progress + "%";
             }).then((unityInstance) => {
-                loadingCover.style.display = "none";
+                
+
             }).catch((message) => {
                 alert(message);
             });
